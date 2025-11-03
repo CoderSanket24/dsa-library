@@ -7,6 +7,8 @@
 #include "linkedlist.h"
 #include "bst.h"
 #include "graph.h"
+#include "searching.h"
+#include "sorting.h"
 
 // DSA Library version
 #define DSA_VERSION "1.0.0"

@@ -2,11 +2,11 @@
 CC = gcc
 AR = ar
 CFLAGS = -Wall -c
-OBJS = queue.o stack.o linkedlist.o bst.o graph.o dsa.o
+OBJS = queue.o stack.o linkedlist.o bst.o graph.o dsa.o searching.o sorting.o
 LIB = libdsa.a
 
 # Default target
-all: $(LIB) myprogram
+all: $(LIB) main
 
 # Build object files
 queue.o: queue.c queue.h
@@ -27,17 +27,23 @@ graph.o: graph.c graph.h
 dsa.o: dsa.c dsa.h
 	$(CC) $(CFLAGS) dsa.c
 
+searching.o: searching.c searching.h
+	$(CC) $(CFLAGS) searching.c
+
+sorting.o: sorting.c sorting.h
+	$(CC) $(CFLAGS) sorting.c
+
 # Create static library
 $(LIB): $(OBJS)
 	$(AR) rcs $(LIB) $(OBJS)
 
 # Link and build main program
-myprogram: main.c $(LIB)
-	$(CC) main.c -L. -ldsa -o myprogram
+main: main.c $(LIB)
+	$(CC) main.c -L. -ldsa -o main
 
 # Clean command
 clean:
-	rm -f *.o *.a myprogram
+	rm -f *.o *.a main
 
 # Individual test programs
 test_queue: test_queue.c $(LIB)
@@ -54,3 +60,12 @@ test_bst: test_bst.c $(LIB)
 
 test_graph: test_graph.c $(LIB)
 	$(CC) test_graph.c -L. -ldsa -o test_graph
+
+test_searching: test_searching.c $(LIB)
+	$(CC) test_searching.c -L. -ldsa -o test_searching
+
+test_sorting: test_sorting.c $(LIB)
+	$(CC) test_sorting.c -L. -ldsa -o test_sorting
+
+test_algorithms: test_algorithms.c $(LIB)
+	$(CC) test_algorithms.c -L. -ldsa -o test_algorithms
