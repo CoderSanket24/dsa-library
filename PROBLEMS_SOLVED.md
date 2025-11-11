@@ -420,3 +420,155 @@ make run_examples
 ---
 
 **All eight problems demonstrate comprehensive use of our DSA library across Queue, Linked List, Searching, and Sorting modules!** 🚀
+
+
+---
+
+## Graph-Based Problems
+
+### Problem 9: Graph Algorithms
+**File**: `examples/problem9_graph_algorithms.c`  
+**Difficulty**: Medium  
+**Data Structure Used**: Graph (Adjacency List)
+
+**Problem**: Demonstrate various graph algorithms including topological sorting, cycle detection, connectivity analysis, and shortest path finding.
+
+**Solution Approaches**:
+1. **Topological Sort (DFS)** - Use DFS with stack to order vertices
+2. **Topological Sort (Kahn's)** - BFS-based with in-degree tracking
+3. **Cycle Detection** - DFS with recursion stack (directed) or parent tracking (undirected)
+4. **Connectivity** - DFS to find connected components
+5. **Shortest Path** - BFS for unweighted graphs
+
+**Graph Library Functions Used**:
+- `graph_create()` - Create graph
+- `graph_add_edge()` - Add edges
+- `graph_topological_sort_dfs()` - DFS-based topological sort
+- `graph_topological_sort_kahn()` - Kahn's algorithm
+- `graph_has_cycle()` - Detect cycles
+- `graph_is_dag()` - Check if DAG
+- `graph_is_connected()` - Check connectivity
+- `graph_count_components()` - Count components
+- `graph_find_component()` - Find component vertices
+- `graph_shortest_path_bfs()` - Find shortest path
+- `graph_shortest_distance()` - Get distance
+- `graph_in_degree()` - Calculate in-degree
+- `graph_all_in_degrees()` - Get all in-degrees
+- `graph_print()` - Visualize graph
+- `graph_free()` - Free memory
+
+**Features**:
+- ✅ Topological sorting (2 algorithms)
+- ✅ Cycle detection (directed & undirected)
+- ✅ DAG validation
+- ✅ Connectivity analysis
+- ✅ Component finding
+- ✅ Shortest path (unweighted)
+- ✅ In-degree calculation
+- ✅ Graph visualization
+- ✅ Course scheduling example
+- ✅ Multiple test cases
+
+**Complexity**:
+- Time: O(V + E) for all algorithms
+- Space: O(V) for auxiliary data structures
+
+**Run**: `./examples/problem9_graph_algorithms`
+
+---
+
+## Updated Summary Table
+
+| Problem | Data Structure | Key Algorithm | Time | Space |
+|---------|---------------|---------------|------|-------|
+| **Problem 1** | Queue | BFS | O(n) | O(w) |
+| **Problem 2** | Deque | Monotonic Deque | O(n) | O(k) |
+| **Problem 3** | Singly/Doubly List | Reversal | O(n) | O(1) |
+| **Problem 4** | Singly List | Floyd's Cycle | O(n) | O(1) |
+| **Problem 5** | Array + Sort | Quick Sort | O(n log n) | O(n) |
+| **Problem 6** | Array + Search | Binary Search | O(log n) | O(log n) |
+| **Problem 7** | Intervals + Sort | Merge Intervals | O(n log n) | O(n) |
+| **Problem 8** | Array + Search | Peak Finding | O(log n) | O(1) |
+| **Problem 9** | Graph | Topological/BFS/DFS | O(V + E) | O(V) |
+
+---
+
+## Complete Build and Run Instructions
+
+### Build All 9 Problems
+```bash
+make examples
+```
+
+### Run All 9 Problems
+```bash
+make run_examples
+```
+
+### Run Individual Problems
+```bash
+# Queue-based problems
+./examples/problem1_level_order_tree
+./examples/problem2_sliding_window
+
+# Linked List problems
+./examples/problem3_reverse_linked_list
+./examples/problem4_detect_cycle
+
+# Sorting problems
+./examples/problem5_kth_largest
+./examples/problem7_merge_intervals
+
+# Searching problems
+./examples/problem6_rotated_search
+./examples/problem8_peak_element
+
+# Graph problems
+./examples/problem9_graph_algorithms
+```
+
+---
+
+## Graph Algorithms Key Learnings
+
+### Topological Sorting
+- ✅ Two approaches: DFS-based and Kahn's algorithm
+- ✅ Only works on DAGs (Directed Acyclic Graphs)
+- ✅ Essential for dependency resolution
+- ✅ Returns NULL if cycle detected
+
+### Cycle Detection
+- ✅ Different approaches for directed vs undirected
+- ✅ Directed: Use recursion stack
+- ✅ Undirected: Use parent tracking
+- ✅ O(V + E) time complexity
+
+### Connectivity
+- ✅ Find connected components
+- ✅ Check if graph is fully connected
+- ✅ Identify isolated vertices
+- ✅ Component-based analysis
+
+### Shortest Path
+- ✅ BFS for unweighted graphs
+- ✅ Returns actual path, not just distance
+- ✅ O(V + E) time complexity
+- ✅ Works for both directed and undirected
+
+---
+
+## Updated Real-World Applications
+
+**Problem 9 (Graph Algorithms)**:
+- 📚 **Course Scheduling**: Determine valid course order with prerequisites
+- 🔨 **Build Systems**: Resolve compilation dependencies (Makefile)
+- 📦 **Package Management**: Install packages in correct order (npm, apt)
+- 🔄 **Deadlock Detection**: Find circular resource dependencies
+- 🌐 **Network Analysis**: Analyze connectivity and find shortest paths
+- 🗺️ **Route Planning**: Find shortest routes in transportation networks
+- 👥 **Social Networks**: Calculate degrees of separation
+- 🔗 **Dependency Resolution**: Resolve any dependency graph
+
+---
+
+**All nine problems demonstrate comprehensive use of our DSA library across Queue, Linked List, Searching, Sorting, and Graph modules!** 🚀🎉

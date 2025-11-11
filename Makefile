@@ -35,7 +35,11 @@ EXAMPLES = $(EXAMPLE_DIR)/problem1_level_order_tree \
            $(EXAMPLE_DIR)/problem5_kth_largest \
            $(EXAMPLE_DIR)/problem6_rotated_search \
            $(EXAMPLE_DIR)/problem7_merge_intervals \
-           $(EXAMPLE_DIR)/problem8_peak_element
+           $(EXAMPLE_DIR)/problem8_peak_element \
+           $(EXAMPLE_DIR)/problem9_graph_algorithms \
+           $(EXAMPLE_DIR)/problem10_dijkstra \
+           $(EXAMPLE_DIR)/problem11_valid_parentheses \
+           $(EXAMPLE_DIR)/problem12_next_greater
 
 # Default target
 all: $(LIB) main
@@ -81,6 +85,18 @@ $(EXAMPLE_DIR)/problem7_merge_intervals: $(EXAMPLE_DIR)/problem7_merge_intervals
 $(EXAMPLE_DIR)/problem8_peak_element: $(EXAMPLE_DIR)/problem8_peak_element.c $(LIB)
 	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem8_peak_element.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem8_peak_element
 
+$(EXAMPLE_DIR)/problem9_graph_algorithms: $(EXAMPLE_DIR)/problem9_graph_algorithms.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem9_graph_algorithms.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem9_graph_algorithms
+
+$(EXAMPLE_DIR)/problem10_dijkstra: $(EXAMPLE_DIR)/problem10_dijkstra.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem10_dijkstra.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem10_dijkstra
+
+$(EXAMPLE_DIR)/problem11_valid_parentheses: $(EXAMPLE_DIR)/problem11_valid_parentheses.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem11_valid_parentheses.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem11_valid_parentheses
+
+$(EXAMPLE_DIR)/problem12_next_greater: $(EXAMPLE_DIR)/problem12_next_greater.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem12_next_greater.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem12_next_greater
+
 # Build all examples
 examples: $(EXAMPLES)
 
@@ -103,6 +119,14 @@ run_examples: examples
 	@./$(EXAMPLE_DIR)/problem7_merge_intervals
 	@echo "\n========================================"
 	@./$(EXAMPLE_DIR)/problem8_peak_element
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem9_graph_algorithms
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem10_dijkstra
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem11_valid_parentheses
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem12_next_greater
 
 # Clean
 clean:
@@ -132,5 +156,9 @@ help:
 	@echo "  make examples/problem6_rotated_search"
 	@echo "  make examples/problem7_merge_intervals"
 	@echo "  make examples/problem8_peak_element"
+	@echo "  make examples/problem9_graph_algorithms"
+	@echo "  make examples/problem10_dijkstra"
+	@echo "  make examples/problem11_valid_parentheses"
+	@echo "  make examples/problem12_next_greater"
 
 .PHONY: all examples run_examples clean distclean help

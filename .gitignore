@@ -19,6 +19,10 @@ examples/problem5_kth_largest
 examples/problem6_rotated_search
 examples/problem7_merge_intervals
 examples/problem8_peak_element
+examples/problem9_graph_algorithms
+examples/problem10_dijkstra
+examples/problem11_valid_parentheses
+examples/problem12_next_greater
 
 # Editor files
 .vscode/
