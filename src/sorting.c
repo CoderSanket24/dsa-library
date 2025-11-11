@@ -8,14 +8,12 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-
 void bubbleSort(int arr[], int n) {
     for (int i = 0; i < n-1; i++)
         for (int j = 0; j < n-i-1; j++)
             if (arr[j] > arr[j+1])
                 swap(&arr[j], &arr[j+1]);
 }
-
 
 void selectionSort(int arr[], int n) {
     for (int i = 0; i < n-1; i++) {
@@ -27,7 +25,6 @@ void selectionSort(int arr[], int n) {
     }
 }
 
-
 void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; i++) {
         int key = arr[i], j = i - 1;
@@ -38,7 +35,6 @@ void insertionSort(int arr[], int n) {
         arr[j + 1] = key;
     }
 }
-
 
 void merge(int arr[], int l, int m, int r) {
     int i, j, k;
@@ -55,7 +51,6 @@ void merge(int arr[], int l, int m, int r) {
     while (i < n1) arr[k++] = L[i++];
     while (j < n2) arr[k++] = R[j++];
 }
-
 
 void mergeSort(int arr[], int l, int r) {
     if (l < r) {

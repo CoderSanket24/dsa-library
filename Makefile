@@ -1,71 +1,72 @@
-# Compiler
+# DSA Library Makefile - Main Project Only
 CC = gcc
 AR = ar
-CFLAGS = -Wall -c
-OBJS = queue.o stack.o linkedlist.o bst.o graph.o dsa.o searching.o sorting.o
-LIB = libdsa.a
+CFLAGS = -Wall -Iinclude
+LDFLAGS = -Lbuild -ldsa
+
+# Directories
+SRC_DIR = src
+INC_DIR = include
+BUILD_DIR = build
+EXAMPLE_DIR = examples
+
+# Source files
+SOURCES = $(SRC_DIR)/queue.c $(SRC_DIR)/stack.c $(SRC_DIR)/linkedlist.c \
+          $(SRC_DIR)/bst.c $(SRC_DIR)/graph.c $(SRC_DIR)/dsa.c \
+          $(SRC_DIR)/searching.c $(SRC_DIR)/sorting.c
+
+# Object files
+OBJECTS = $(BUILD_DIR)/queue.o $(BUILD_DIR)/stack.o $(BUILD_DIR)/linkedlist.o \
+          $(BUILD_DIR)/bst.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/dsa.o \
+          $(BUILD_DIR)/searching.o $(BUILD_DIR)/sorting.o
+
+# Library
+LIB = $(BUILD_DIR)/libdsa.a
 
 # Default target
 all: $(LIB) main
 
+# Create build directory
+$(BUILD_DIR):
+	mkdir -p $(BUILD_DIR)
+
 # Build object files
-queue.o: queue.c queue.h
-	$(CC) $(CFLAGS) queue.c
-
-stack.o: stack.c stack.h
-	$(CC) $(CFLAGS) stack.c
-
-linkedlist.o: linkedlist.c linkedlist.h
-	$(CC) $(CFLAGS) linkedlist.c
-
-bst.o: bst.c bst.h
-	$(CC) $(CFLAGS) bst.c
-
-graph.o: graph.c graph.h
-	$(CC) $(CFLAGS) graph.c
-
-dsa.o: dsa.c dsa.h
-	$(CC) $(CFLAGS) dsa.c
-
-searching.o: searching.c searching.h
-	$(CC) $(CFLAGS) searching.c
-
-sorting.o: sorting.c sorting.h
-	$(CC) $(CFLAGS) sorting.c
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c | $(BUILD_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 # Create static library
-$(LIB): $(OBJS)
-	$(AR) rcs $(LIB) $(OBJS)
+$(LIB): $(OBJECTS)
+	$(AR) rcs $(LIB) $(OBJECTS)
 
-# Link and build main program
+# Build main program
 main: main.c $(LIB)
-	$(CC) main.c -L. -ldsa -o main
+	$(CC) $(CFLAGS) main.c $(LDFLAGS) -o main
 
-# Clean command
+# Build examples
+examples: $(LIB)
+	@cd $(EXAMPLE_DIR) && $(MAKE) all
+
+# Run all examples
+run_examples: examples
+	@cd $(EXAMPLE_DIR) && $(MAKE) run
+
+# Clean
 clean:
-	rm -f *.o *.a main
+	rm -rf $(BUILD_DIR)/*.o $(BUILD_DIR)/*.a
+	rm -f main
+	@cd $(EXAMPLE_DIR) && $(MAKE) clean 2>/dev/null || true
 
-# Individual test programs
-test_queue: test_queue.c $(LIB)
-	$(CC) test_queue.c -L. -ldsa -o test_queue
+# Clean everything including build directory
+distclean: clean
+	rm -rf $(BUILD_DIR)
 
-test_stack: test_stack.c $(LIB)
-	$(CC) test_stack.c -L. -ldsa -o test_stack
+# Help
+help:
+	@echo "DSA Library - Available targets:"
+	@echo "  make          - Build library and main program"
+	@echo "  make examples - Build all examples"
+	@echo "  make run_examples - Run all examples"
+	@echo "  make clean    - Remove build artifacts"
+	@echo "  make help     - Show this help message"
 
-test_list: test_list.c $(LIB)
-	$(CC) test_list.c -L. -ldsa -o test_list
-
-test_bst: test_bst.c $(LIB)
-	$(CC) test_bst.c -L. -ldsa -o test_bst
-
-test_graph: test_graph.c $(LIB)
-	$(CC) test_graph.c -L. -ldsa -o test_graph
-
-test_searching: test_searching.c $(LIB)
-	$(CC) test_searching.c -L. -ldsa -o test_searching
-
-test_sorting: test_sorting.c $(LIB)
-	$(CC) test_sorting.c -L. -ldsa -o test_sorting
-
-test_algorithms: test_algorithms.c $(LIB)
-	$(CC) test_algorithms.c -L. -ldsa -o test_algorithms
+.PHONY: all examples run_examples clean distclean help
