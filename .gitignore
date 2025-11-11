@@ -10,9 +10,15 @@ build/
 # Main executable
 main
 
-# Example executables
+# Problem executables
 examples/problem1_level_order_tree
 examples/problem2_sliding_window
+examples/problem3_reverse_linked_list
+examples/problem4_detect_cycle
+examples/problem5_kth_largest
+examples/problem6_rotated_search
+examples/problem7_merge_intervals
+examples/problem8_peak_element
 
 # Editor files
 .vscode/

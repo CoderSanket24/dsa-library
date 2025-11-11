@@ -29,7 +29,13 @@ LIB = $(BUILD_DIR)/libdsa.a
 
 # DSA Problem programs
 EXAMPLES = $(EXAMPLE_DIR)/problem1_level_order_tree \
-           $(EXAMPLE_DIR)/problem2_sliding_window
+           $(EXAMPLE_DIR)/problem2_sliding_window \
+           $(EXAMPLE_DIR)/problem3_reverse_linked_list \
+           $(EXAMPLE_DIR)/problem4_detect_cycle \
+           $(EXAMPLE_DIR)/problem5_kth_largest \
+           $(EXAMPLE_DIR)/problem6_rotated_search \
+           $(EXAMPLE_DIR)/problem7_merge_intervals \
+           $(EXAMPLE_DIR)/problem8_peak_element
 
 # Default target
 all: $(LIB) main
@@ -57,6 +63,24 @@ $(EXAMPLE_DIR)/problem1_level_order_tree: $(EXAMPLE_DIR)/problem1_level_order_tr
 $(EXAMPLE_DIR)/problem2_sliding_window: $(EXAMPLE_DIR)/problem2_sliding_window.c $(LIB)
 	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem2_sliding_window.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem2_sliding_window
 
+$(EXAMPLE_DIR)/problem3_reverse_linked_list: $(EXAMPLE_DIR)/problem3_reverse_linked_list.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem3_reverse_linked_list.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem3_reverse_linked_list
+
+$(EXAMPLE_DIR)/problem4_detect_cycle: $(EXAMPLE_DIR)/problem4_detect_cycle.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem4_detect_cycle.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem4_detect_cycle
+
+$(EXAMPLE_DIR)/problem5_kth_largest: $(EXAMPLE_DIR)/problem5_kth_largest.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem5_kth_largest.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem5_kth_largest
+
+$(EXAMPLE_DIR)/problem6_rotated_search: $(EXAMPLE_DIR)/problem6_rotated_search.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem6_rotated_search.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem6_rotated_search
+
+$(EXAMPLE_DIR)/problem7_merge_intervals: $(EXAMPLE_DIR)/problem7_merge_intervals.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem7_merge_intervals.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem7_merge_intervals
+
+$(EXAMPLE_DIR)/problem8_peak_element: $(EXAMPLE_DIR)/problem8_peak_element.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/problem8_peak_element.c $(LDFLAGS) -o $(EXAMPLE_DIR)/problem8_peak_element
+
 # Build all examples
 examples: $(EXAMPLES)
 
@@ -67,6 +91,18 @@ run_examples: examples
 	@./$(EXAMPLE_DIR)/problem1_level_order_tree
 	@echo "\n========================================"
 	@./$(EXAMPLE_DIR)/problem2_sliding_window
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem3_reverse_linked_list
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem4_detect_cycle
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem5_kth_largest
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem6_rotated_search
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem7_merge_intervals
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/problem8_peak_element
 
 # Clean
 clean:
@@ -90,5 +126,11 @@ help:
 	@echo "Individual problem targets:"
 	@echo "  make examples/problem1_level_order_tree"
 	@echo "  make examples/problem2_sliding_window"
+	@echo "  make examples/problem3_reverse_linked_list"
+	@echo "  make examples/problem4_detect_cycle"
+	@echo "  make examples/problem5_kth_largest"
+	@echo "  make examples/problem6_rotated_search"
+	@echo "  make examples/problem7_merge_intervals"
+	@echo "  make examples/problem8_peak_element"
 
 .PHONY: all examples run_examples clean distclean help
