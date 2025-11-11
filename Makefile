@@ -11,12 +11,16 @@ BUILD_DIR = build
 EXAMPLE_DIR = examples
 
 # Source files
-SOURCES = $(SRC_DIR)/queue.c $(SRC_DIR)/stack.c $(SRC_DIR)/linkedlist.c \
+SOURCES = $(SRC_DIR)/queue.c $(SRC_DIR)/circular_queue.c \
+          $(SRC_DIR)/priority_queue.c $(SRC_DIR)/deque.c $(SRC_DIR)/stack.c \
+          $(SRC_DIR)/singly_linked_list.c $(SRC_DIR)/doubly_linked_list.c $(SRC_DIR)/circular_linked_list.c \
           $(SRC_DIR)/bst.c $(SRC_DIR)/graph.c $(SRC_DIR)/dsa.c \
           $(SRC_DIR)/searching.c $(SRC_DIR)/sorting.c
 
 # Object files
-OBJECTS = $(BUILD_DIR)/queue.o $(BUILD_DIR)/stack.o $(BUILD_DIR)/linkedlist.o \
+OBJECTS = $(BUILD_DIR)/queue.o $(BUILD_DIR)/circular_queue.o \
+          $(BUILD_DIR)/priority_queue.o $(BUILD_DIR)/deque.o $(BUILD_DIR)/stack.o \
+          $(BUILD_DIR)/singly_linked_list.o $(BUILD_DIR)/doubly_linked_list.o $(BUILD_DIR)/circular_linked_list.o \
           $(BUILD_DIR)/bst.o $(BUILD_DIR)/graph.o $(BUILD_DIR)/dsa.o \
           $(BUILD_DIR)/searching.o $(BUILD_DIR)/sorting.o
 

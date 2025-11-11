@@ -15,7 +15,7 @@ bool isEmpty_stack(Stack *s);
 bool isFull_stack(Stack *s);
 bool push(Stack *s, int value);
 bool pop(Stack *s, int *popped);
-bool peek(Stack *s, int *top_value);
+bool peekStack(Stack *s, int *top_value);
 void displayStack(Stack *s);
 
 #endif

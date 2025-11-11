@@ -29,7 +29,7 @@ bool pop(Stack *s, int *popped) {
     return true;
 }
 
-bool peek(Stack *s, int *top_value) {
+bool peekStack(Stack *s, int *top_value) {
     if (isEmpty_stack(s))
         return false;
     

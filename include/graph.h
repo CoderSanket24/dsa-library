@@ -1,27 +1,32 @@
-#ifndef GRAPH_H
 #define GRAPH_H
 
-#include <stdbool.h>
+#include <stddef.h>
 
-#define MAX_VERTICES 100
-
-struct Node {
+typedef struct AdjNode {
     int dest;
-    struct Node* next;
-};
+    int weight;
+    struct AdjNode *next;
+} AdjNode;
 
-struct AdjList {
-    struct Node* head;
-};
-
-struct Graph {
+typedef struct Graph {
     int V;
-    struct AdjList* array;
-};
+    int directed; /* 0 = undirected, 1 = directed */
+    AdjNode **adj; /* array of adjacency lists (size V) */
+} Graph;
 
-struct Graph* createGraph(int V);
-void addEdge(struct Graph* graph, int src, int dest);
-void printGraph(struct Graph* graph);
-void freeGraph(struct Graph* graph);
+typedef struct Edge {
+    int src, dest, weight;
+} Edge;
 
-#endif 
+/* graph creation / destruction */
+Graph *graph_create(int V, int directed);
+void graph_free(Graph *g);
+
+/* add edges */
+void graph_add_edge(Graph *g, int src, int dest);                /* unweighted: weight = 1 */
+void graph_add_edge_weighted(Graph *g, int src, int dest, int weight);
+
+/* traversal */
+void graph_bfs(Graph *g, int start, void (*visit)(int));
+void graph_dfs(Graph *g, int start, void (*visit)(int));         /* recursive from start */
+void graph_dfs_all(Graph *g, void (*visit)(int));               /* covers all components */
