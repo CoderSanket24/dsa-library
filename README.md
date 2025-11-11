@@ -94,17 +94,33 @@ cd examples && ./example_expression
 - **Advanced**: Merge, Quick, Heap - O(n log n)
 - **Special**: Counting Sort - O(n+k)
 
-## 💡 DSA Problem Solutions
+## 💡 DSA Problem Solutions (12 Problems)
 
-### Problem 1: Binary Tree Level Order Traversal (Medium)
-- **Queue Used**: Simple Queue (BFS)
-- **Features**: Level traversal, max depth, right side view
-- **Functions**: `initQueue()`, `enqueue()`, `dequeue()`, `isEmpty()`, `queueSize()`
+### Queue-Based (2)
+1. **Binary Tree Level Order Traversal** - BFS using Queue
+2. **Sliding Window Maximum** - Monotonic Deque
 
-### Problem 2: Sliding Window Maximum (Medium)
-- **Queue Used**: Deque (Double-ended Queue)
-- **Features**: Max/min/average in sliding windows
-- **Functions**: `initDeque()`, `insertRear()`, `deleteRear()`, `deleteFront()`, `peekFront()`, `peekRear()`
+### Linked List (2)
+3. **Reverse Linked List** - Multiple reversal techniques
+4. **Detect and Remove Cycle** - Floyd's algorithm
+
+### Sorting (2)
+5. **Find Kth Largest Element** - Quick Sort application
+7. **Merge Overlapping Intervals** - Interval sorting
+
+### Searching (2)
+6. **Search in Rotated Sorted Array** - Modified binary search
+8. **Find Peak Element** - Peak finding algorithm
+
+### Graph (2)
+9. **Graph Algorithms** - Topological sort, cycle detection, shortest path
+10. **Dijkstra's Algorithm** - Weighted shortest path
+
+### Stack (2)
+11. **Valid Parentheses** - Expression parsing and validation
+12. **Next Greater Element** - Monotonic stack pattern
+
+**See [docs/PROBLEMS_SOLVED.md](docs/PROBLEMS_SOLVED.md) for detailed explanations.**
 
 ## 🛠️ Build Commands
 
@@ -127,10 +143,23 @@ make clean
 
 ## 📖 Documentation
 
-- **[User Guide](docs/README.md)** - Detailed usage instructions
-- **[Project Report](docs/PROJECT_REPORT.md)** - Technical documentation
+All documentation is organized in the `docs/` folder:
+
+### Main Documentation
+- **[Problems Solved](docs/PROBLEMS_SOLVED.md)** - All 12 DSA problems detailed
+- **[Complete Project Status](docs/COMPLETE_PROJECT_STATUS.md)** - Full project overview
+- **[Quick Reference](docs/QUICK_REFERENCE.md)** - Quick commands and usage
+
+### Specialized Guides
+- **[Graph Algorithms](docs/GRAPH_ALGORITHMS.md)** - Graph functions and algorithms
+- **[Dijkstra Algorithm](docs/DIJKSTRA_ALGORITHM.md)** - Shortest path documentation
+- **[Stack Problems](docs/STACK_PROBLEMS_SUMMARY.md)** - Stack-based problems
+- **[Searching & Sorting](docs/SEARCHING_SORTING_PROBLEMS.md)** - Problems 5-8
+
+### Project Documentation
+- **[Project Summary](docs/PROJECT_SUMMARY.md)** - Project structure
+- **[Project Report](docs/PROJECT_REPORT.md)** - Technical report
 - **[Presentation Guide](docs/PRESENTATION_GUIDE.md)** - Presentation tips
-- **[Examples Guide](examples/README.md)** - Application examples
 
 ## ✅ Validation
 
