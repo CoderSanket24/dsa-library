@@ -94,15 +94,17 @@ cd examples && ./example_expression
 - **Advanced**: Merge, Quick, Heap - O(n log n)
 - **Special**: Counting Sort - O(n+k)
 
-## 💡 Real-World Examples
+## 💡 DSA Problem Solutions
 
-1. **Expression Evaluator** - Calculator using Stack
-2. **Task Scheduler** - Job queue using Queue
-3. **Social Network** - Friend connections using Graph
-4. **Student Database** - Records using BST + Sorting
-5. **Palindrome Checker** - Validation using Stack
-6. **Top K Finder** - Rankings using Sorting
-7. **Undo/Redo System** - History using dual Stacks
+### Problem 1: Binary Tree Level Order Traversal (Medium)
+- **Queue Used**: Simple Queue (BFS)
+- **Features**: Level traversal, max depth, right side view
+- **Functions**: `initQueue()`, `enqueue()`, `dequeue()`, `isEmpty()`, `queueSize()`
+
+### Problem 2: Sliding Window Maximum (Medium)
+- **Queue Used**: Deque (Double-ended Queue)
+- **Features**: Max/min/average in sliding windows
+- **Functions**: `initDeque()`, `insertRear()`, `deleteRear()`, `deleteFront()`, `peekFront()`, `peekRear()`
 
 ## 🛠️ Build Commands
 

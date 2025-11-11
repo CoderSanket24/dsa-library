@@ -1,2 +1,26 @@
+# Object files
 *.o
+
+# Static libraries
 *.a
+
+# Build directory
+build/
+
+# Main executable
+main
+
+# Example executables
+examples/problem1_level_order_tree
+examples/problem2_sliding_window
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
