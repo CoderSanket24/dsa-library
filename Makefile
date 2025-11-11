@@ -1,4 +1,4 @@
-# DSA Library Makefile - Main Project Only
+# DSA Library Makefile - Single Build File
 CC = gcc
 AR = ar
 CFLAGS = -Wall -Iinclude
@@ -23,6 +23,12 @@ OBJECTS = $(BUILD_DIR)/queue.o $(BUILD_DIR)/stack.o $(BUILD_DIR)/linkedlist.o \
 # Library
 LIB = $(BUILD_DIR)/libdsa.a
 
+# Example programs
+EXAMPLES = $(EXAMPLE_DIR)/example_expression $(EXAMPLE_DIR)/example_scheduler \
+           $(EXAMPLE_DIR)/example_social $(EXAMPLE_DIR)/example_students \
+           $(EXAMPLE_DIR)/example_palindrome $(EXAMPLE_DIR)/example_topk \
+           $(EXAMPLE_DIR)/example_undo
+
 # Default target
 all: $(LIB) main
 
@@ -42,19 +48,54 @@ $(LIB): $(OBJECTS)
 main: main.c $(LIB)
 	$(CC) $(CFLAGS) main.c $(LDFLAGS) -o main
 
-# Build examples
-examples: $(LIB)
-	@cd $(EXAMPLE_DIR) && $(MAKE) all
+# Build individual examples
+$(EXAMPLE_DIR)/example_expression: $(EXAMPLE_DIR)/example_expression.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/example_expression.c $(LDFLAGS) -o $(EXAMPLE_DIR)/example_expression
+
+$(EXAMPLE_DIR)/example_scheduler: $(EXAMPLE_DIR)/example_scheduler.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/example_scheduler.c $(LDFLAGS) -o $(EXAMPLE_DIR)/example_scheduler
+
+$(EXAMPLE_DIR)/example_social: $(EXAMPLE_DIR)/example_social.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/example_social.c $(LDFLAGS) -o $(EXAMPLE_DIR)/example_social
+
+$(EXAMPLE_DIR)/example_students: $(EXAMPLE_DIR)/example_students.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/example_students.c $(LDFLAGS) -o $(EXAMPLE_DIR)/example_students
+
+$(EXAMPLE_DIR)/example_palindrome: $(EXAMPLE_DIR)/example_palindrome.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/example_palindrome.c $(LDFLAGS) -o $(EXAMPLE_DIR)/example_palindrome
+
+$(EXAMPLE_DIR)/example_topk: $(EXAMPLE_DIR)/example_topk.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/example_topk.c $(LDFLAGS) -o $(EXAMPLE_DIR)/example_topk
+
+$(EXAMPLE_DIR)/example_undo: $(EXAMPLE_DIR)/example_undo.c $(LIB)
+	$(CC) $(CFLAGS) $(EXAMPLE_DIR)/example_undo.c $(LDFLAGS) -o $(EXAMPLE_DIR)/example_undo
+
+# Build all examples
+examples: $(EXAMPLES)
 
 # Run all examples
 run_examples: examples
-	@cd $(EXAMPLE_DIR) && $(MAKE) run
+	@echo "=== Running All Examples ==="
+	@echo ""
+	@./$(EXAMPLE_DIR)/example_expression
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/example_scheduler
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/example_social
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/example_students
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/example_palindrome
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/example_topk
+	@echo "\n========================================"
+	@./$(EXAMPLE_DIR)/example_undo
 
 # Clean
 clean:
 	rm -rf $(BUILD_DIR)/*.o $(BUILD_DIR)/*.a
 	rm -f main
-	@cd $(EXAMPLE_DIR) && $(MAKE) clean 2>/dev/null || true
+	rm -f $(EXAMPLES)
 
 # Clean everything including build directory
 distclean: clean
@@ -63,10 +104,19 @@ distclean: clean
 # Help
 help:
 	@echo "DSA Library - Available targets:"
-	@echo "  make          - Build library and main program"
-	@echo "  make examples - Build all examples"
+	@echo "  make              - Build library and main program"
+	@echo "  make examples     - Build all examples"
 	@echo "  make run_examples - Run all examples"
-	@echo "  make clean    - Remove build artifacts"
-	@echo "  make help     - Show this help message"
+	@echo "  make clean        - Remove build artifacts"
+	@echo "  make help         - Show this help message"
+	@echo ""
+	@echo "Individual example targets:"
+	@echo "  make examples/example_expression"
+	@echo "  make examples/example_scheduler"
+	@echo "  make examples/example_social"
+	@echo "  make examples/example_students"
+	@echo "  make examples/example_palindrome"
+	@echo "  make examples/example_topk"
+	@echo "  make examples/example_undo"
 
 .PHONY: all examples run_examples clean distclean help
